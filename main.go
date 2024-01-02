@@ -72,7 +72,6 @@ func auth(c *gin.Context) {
 	c.Next()
 }
 
-// index page
 func indexHandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", nil)
 }
@@ -82,7 +81,6 @@ func loginGEThandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "login.html", nil)
 }
 
-// loginPOSThandler verifies login credentials
 func loginPOSThandler(c *gin.Context) {
 	var user User
 	user.Username = c.PostForm("username")
@@ -105,7 +103,6 @@ func loginPOSThandler(c *gin.Context) {
 	c.HTML(http.StatusUnauthorized, "login.html", gin.H{"message": "check username and password"})
 }
 
-// profileHandler displays profile information
 func profileHandler(c *gin.Context) {
 	session, _ := store.Get(c.Request, "session")
 	var user = &User{}
